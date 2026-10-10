@@ -1,0 +1,80 @@
+name: "mathteach-studio"
+title: "MathTeach Studio 12 - Trợ Giảng Toán 12 Mới"
+description: "Ứng dụng và Chrome Extension trợ giảng trực tuyến cho giáo viên Toán 12 CT GDPT 2018."
+
+stages:
+  - id: "stage_1_shell_and_calculus"
+    title: "Giai đoạn 1: Khung Minimalist + Bảng Biến Thiên SVG & Đồ Thị 12"
+    prompt: |
+      Xây dựng ứng dụng web trợ giảng toán học trực tuyến chuyên nghiệp cho giáo viên Toán 12: "MathTeach Studio 12".
+      Ứng dụng sẽ được đóng gói thành Extension phục vụ dạy học online trên Zoom/Meet.
+
+      QUY TẮC THIẾT KẾ (DESIGN SYSTEM BẮT BUỘC):
+      - Phong cách: Tối giản, hiện đại, lấy cảm hứng từ Linear, Vercel, Raycast.
+      - KHÔNG dùng phong cách "AI slop" màu mè, KHÔNG dùng gradient cầu vồng, KHÔNG bo tròn dạng pill/bong bóng (Tất cả card, button, input phải có góc vuông vắn hoặc bo góc siêu nhỏ: rounded-none hoặc rounded-sm).
+      - Viền: 1px border sắc nét rõ ràng (border border-neutral-800).
+      - Màu sắc: Nền đen sâu (bg-neutral-950 hoặc #09090b), panel bề mặt (bg-neutral-900), chữ trắng ngà (text-neutral-100/200), màu nhấn đơn sắc phẳng: Electric Blue (#2563eb) hoặc Emerald (#10b981).
+      - Font chữ: Inter cho chữ thường, JetBrains Mono cho số liệu và biểu thức toán học.
+      - Bố cục: Viewport-locked 100vh (h-screen overflow-hidden), thanh công cụ trên cùng h-12 viền sắc nét, chia 2 cột Split-pane: Cột trái (Panel tham số nhập liệu), Cột phải (Vùng bảng vẽ/Canvas trực quan).
+
+      TÍNH NĂNG GIAI ĐOẠN 1:
+      1. Thanh điều hướng Tab phẳng:
+         - [Bảng Biến Thiên & Đồ Thị] (Đang kích hoạt)
+         - [Thống Kê Ghép Nhóm]
+         - [Xác Suất Sơ Đồ Cây]
+         - [Không Gian Oxyz 3D]
+      2. Module Bảng Biến Thiên (BBT) & Đồ Thị Giải Tích 12 CTM:
+         - Hỗ trợ 3 dạng hàm số trọng tâm Toán 12:
+           + Hàm bậc ba: y = ax^3 + bx^2 + cx + d
+           + Hàm phân thức bậc 1 / bậc 1: y = (ax+b)/(cx+d)
+           + Hàm phân thức bậc 2 / bậc 1: y = (ax^2+bx+c)/(px+q) (Có Tiệm cận xiên - kiến thức trọng tâm SGK 12 mới).
+         - Tự động tính: Tập xác định, đạo hàm y', nghiệm y'=0, toạ độ cực trị, tiệm cận đứng, tiệm cận ngang, tiệm cận xiên.
+         - Bảng biến thiên SVG chuẩn mực SGK Toán Việt Nam: Vẽ bảng vector sắc nét với dòng x, dòng y', dòng y, mũi tên đi lên/xuống, dấu gạch đôi ||, dấu +/- và các giá trị cực trị/vô cực.
+         - Vẽ đồ thị hàm số phẳng đồng bộ, có tiệm cận nét đứt.
+         - Nút chức năng giáo viên: [Sao chép SVG] và [Tải ảnh PNG] để dán trực tiếp vào PowerPoint / Word khi dạy học.
+
+  - id: "stage_2_statistics_quartiles"
+    title: "Giai đoạn 2: Thống Kê Mẫu Số Liệu Ghép Nhóm Toán 12 CTM"
+    prompt: |
+      Hoàn thiện Tab [Thống Kê Ghép Nhóm] theo đúng chuẩn Sách Giáo Khoa Toán 12 Chương trình mới:
+      1. Bảng nhập dữ liệu mẫu số liệu ghép nhóm:
+         - Cho phép nhập các nửa khoảng [a_i; a_{i+1}) và tần số tương ứng m_i.
+         - Hỗ trợ thêm/xóa dòng nhanh, có nút "Dữ liệu mẫu SGK" để giáo viên nạp nhanh bài giảng.
+         - Tự động tính cột Giá trị đại diện c_i và Tần số tích lũy cf_i.
+      2. Bộ tính toán thống kê tự động:
+         - Cỡ mẫu n, Số trung bình x̄, Mốt M_o, Trung vị M_e.
+         - Tứ phân vị thứ nhất Q_1, Tứ phân vị thứ ba Q_3.
+         - Khoảng tứ phân vị Δ_Q = Q_3 - Q_1.
+         - Phương sai s^2 và Độ lệch chuẩn s.
+      3. Tab "Lời giải chi tiết từng bước" (Dành cho trình chiếu giảng dạy):
+         - Trình bày sư phạm chuẩn xác từng bước: Xác định nhóm chứa Q_1, nêu công thức Q_1 = u_m + ((n/4 - C)/n_m)*h, thay số cụ thể và ra đáp số.
+         - Hiển thị công thức toán học định dạng rõ ràng, vuông vức, tương phản cao trên nền tối.
+
+  - id: "stage_3_conditional_probability_tree"
+    title: "Giai đoạn 3: Xác Suất Có Điều Kiện & Sơ Đồ Cây 2 Tầng"
+    prompt: |
+      Hoàn thiện Tab [Xác Suất Sơ Đồ Cây] phục vụ chuyên đề Xác suất có điều kiện Toán 12 CTM:
+      1. Bộ tạo Sơ đồ cây phân nhánh (Tree Diagram) 2 tầng bằng SVG kỹ thuật:
+         - Tầng 1: Biến cố A và biến cố đối Ā với xác suất P(A), P(Ā).
+         - Tầng 2: Các biến cố có điều kiện: B|A, B̄|A và B|Ā, B̄|Ā kèm xác suất nhánh.
+         - Nhánh cây vẽ bằng đường nét kỹ thuật thẳng, sắc nét (không bo tròn, không hiệu ứng mờ).
+         - Cho phép chỉnh sửa trực tiếp giá trị xác suất và tên biến cố.
+      2. Bộ tính toán xác suất tự động:
+         - Công thức xác suất toàn phần: P(B) = P(A)*P(B|A) + P(Ā)*P(B|Ā).
+         - Công thức Bayes: P(A|B) = (P(A)*P(B|A)) / P(B).
+         - Nút nạp nhanh các bài toán thực tế SGK 12: "Bài toán xét nghiệm bệnh hiếm", "Bài toán kiểm tra chất lượng linh kiện", "Bài toán xạ thủ".
+
+  - id: "stage_4_3d_geometry_oxyz"
+    title: "Giai đoạn 4: Không Gian Oxyz 3D & Công Cụ Trợ Giảng Extension"
+    prompt: |
+      Hoàn thiện Tab [Không Gian Oxyz 3D] và Bộ công cụ trợ giảng Extension:
+      1. Không gian toạ độ Oxyz 3D tương tác:
+         - Hệ trục toạ độ vuông góc Oxyz với các trục Ox (đỏ), Oy (xanh lá), Oz (xanh dương), kèm lưới phẳng Oxy.
+         - Hỗ trợ xoay góc nhìn 3D 360 độ trực quan bằng chuột kéo thả.
+         - Biểu diễn điểm M(x, y, z) với các đoạn đứt nét vuông góc chiếu lên 3 trục và các mặt phẳng toạ độ.
+         - Vẽ mặt phẳng (α): Ax + By + Cz + D = 0 dưới dạng mặt lưới toạ độ trong không gian.
+         - Vẽ mặt cầu (S): (x-a)^2 + (y-b)^2 + (z-c)^2 = R^2 và đường thẳng (d) qua điểm M có VTCP u.
+      2. Tối ưu cho Extension & Dạy Online:
+         - Thanh công cụ Presenter: Nút phóng to toàn màn hình, nút "Copy ảnh bài học" nhanh để dán thẳng vào OneNote / Word.
+         - Phím tắt: Bấm số 1, 2, 3, 4 để chuyển tức thì giữa các phân môn khi đang dạy trên Zoom/Meet.
+         - Giữ nguyên triết lý thiết kế: Vuông vức, sắc sảo, không gradient, không AI slop.

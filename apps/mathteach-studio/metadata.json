@@ -1,6 +1,0 @@
-{
-  "name": "MathTeach Studio 12",
-  "description": "Trợ giảng toán học trực tuyến chuyên nghiệp cho giáo viên Toán 12: Bảng biến thiên SGK, khảo sát đồ thị, tiệm cận xiên, thống kê ghép nhóm, xác suất sơ đồ cây và hình học Oxyz.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

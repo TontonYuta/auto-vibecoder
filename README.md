@@ -68,8 +68,8 @@ npm run check
 # Run the MathHeads Speed Math trainer recipe:
 npm run vibecode:mathheads
 
-# Run the MathTeach Studio 12 teacher platform:
-node auto_mathteach_pipeline.js
+# Run the MathTeach Studio 12 recipe:
+npm run vibecode:mathteach
 
 # Or run from your own raw idea:
 npm run vibecode:idea "Clone game 2048 nhưng phong cách Neon Synthwave"
@@ -77,9 +77,9 @@ npm run vibecode:idea "Clone game 2048 nhưng phong cách Neon Synthwave"
 
 ---
 
-## 📐 Featured Project: MathTeach Studio 12
+## 📐 Featured Showcase: MathTeach Studio 12
 
-An interactive web application & extension for high school math teachers (Vietnamese Curriculum GDPT 2018 - Toán 12 Mới):
+A production web application & Chrome Extension for high school math teachers (Vietnamese Curriculum GDPT 2018 - Toán 12 Mới), completely vibecoded using Auto-Vibecoder:
 - **Aesthetic:** Modern Linear/Raycast design, zero "AI slop", sharp 1px borders, deep dark `#09090b` palette, 100vh locked layout.
 - **Module 1 (Giải Tích 12):** Vector SVG Bảng biến thiên chuẩn SGK, Đồ thị 2D, hỗ trợ hàm bậc 3, phân thức bậc 1/1 và **phân thức bậc 2/1 có Tiệm cận xiên (TCX)**, xuất SVG/PNG/LaTeX tkz-tab.
 - **Module 2 (Thống Kê Ghép Nhóm):** Tự động tính mẫu số liệu ghép nhóm $[a_i; a_{i+1})$, giá trị đại diện $c_i$, tần số tích luỹ $cf_i$, trung vị, mốt, tứ phân vị $Q_1, Q_3$, khoảng tứ phân vị $\Delta_Q$, phương sai & kèm **Lời giải chi tiết từng bước** chuẩn SGK.
