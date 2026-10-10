@@ -68,9 +68,24 @@ npm run check
 # Run the MathHeads Speed Math trainer recipe:
 npm run vibecode:mathheads
 
+# Run the MathTeach Studio 12 teacher platform:
+node auto_mathteach_pipeline.js
+
 # Or run from your own raw idea:
 npm run vibecode:idea "Clone game 2048 nhưng phong cách Neon Synthwave"
 ```
+
+---
+
+## 📐 Featured Project: MathTeach Studio 12
+
+An interactive web application & extension for high school math teachers (Vietnamese Curriculum GDPT 2018 - Toán 12 Mới):
+- **Aesthetic:** Modern Linear/Raycast design, zero "AI slop", sharp 1px borders, deep dark `#09090b` palette, 100vh locked layout.
+- **Module 1 (Giải Tích 12):** Vector SVG Bảng biến thiên chuẩn SGK, Đồ thị 2D, hỗ trợ hàm bậc 3, phân thức bậc 1/1 và **phân thức bậc 2/1 có Tiệm cận xiên (TCX)**, xuất SVG/PNG/LaTeX tkz-tab.
+- **Module 2 (Thống Kê Ghép Nhóm):** Tự động tính mẫu số liệu ghép nhóm $[a_i; a_{i+1})$, giá trị đại diện $c_i$, tần số tích luỹ $cf_i$, trung vị, mốt, tứ phân vị $Q_1, Q_3$, khoảng tứ phân vị $\Delta_Q$, phương sai & kèm **Lời giải chi tiết từng bước** chuẩn SGK.
+- **Module 3 (Xác Suất Sơ Đồ Cây):** Sơ đồ cây kỹ thuật 2 tầng vector SVG, tính xác suất toàn phần & công thức Bayes với các bài toán mẫu thực tế (xét nghiệm bệnh, kiểm tra linh kiện, xạ thủ).
+- **Module 4 (Không Gian Oxyz 3D):** Trục toạ độ Oxyz, hộp chiếu vuông góc điểm $M(x,y,z)$, mặt phẳng $(\alpha)$, mặt cầu $(S)$, đường thẳng $(d)$, tích có hướng, tích vô hướng và khoảng cách.
+- **Presenter Mode:** Phím tắt bàn phím (1, 2, 3, 4, Z, F), nút copy nhanh bài giảng vào Word/OneNote/PowerPoint.
 
 ---
 
