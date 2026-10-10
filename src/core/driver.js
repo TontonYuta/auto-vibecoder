@@ -26,6 +26,17 @@ class AIStudioDriver {
   async sendPrompt(text) {
     await this.dismissPopups();
 
+    // Nếu đang ở chế độ fullscreen applet, thoát ra để hiển thị ô nhập prompt
+    if (this.page.url().includes('fullscreenApplet=true')) {
+      try {
+        const exitFsBtn = await this.page.$('button[aria-label*="Exit full screen"], button[aria-label*="Full screen"]');
+        if (exitFsBtn) {
+          await exitFsBtn.click({ force: true });
+          await sleep(500);
+        }
+      } catch (e) {}
+    }
+
     // 1. Tìm ô nhập liệu (Chat box trong Editor hoặc Textarea ở Home)
     const inputSelector = 'textarea[placeholder*="Make changes"], textarea.prompt-textarea, textarea[placeholder*="Describe an app"], div[contenteditable="true"]';
     let inputField = await this.page.$(inputSelector);
@@ -35,18 +46,19 @@ class AIStudioDriver {
     }
 
     logger.info('Đang nhập prompt vào AI Studio...');
-    await inputField.click();
+    await inputField.focus();
+    await inputField.click({ force: true }).catch(() => {});
     await inputField.fill(text);
     await sleep(800);
 
     // 2. Tìm nút gửi
     const sendBtn = await this.page.$(
-      'button.send-button:not(.running), button.build-button, button[aria-label*="Send"], button:has-text("Send"), button:has-text("Build")'
+      'button[aria-label*="Send"], button.send-button:not(.running), button.build-button, button:has-text("Send"), button:has-text("Build")'
     );
 
     if (sendBtn && (await sendBtn.isVisible())) {
       logger.info('Nhấn nút gửi...');
-      await sendBtn.click();
+      await sendBtn.click({ force: true });
     } else {
       logger.info('Gửi bằng tổ hợp phím Control+Enter...');
       await this.page.keyboard.press('Control+Enter');
@@ -82,6 +94,21 @@ class AIStudioDriver {
     await this.page.screenshot({ path: filePath });
     logger.success(`Đã lưu ảnh chụp: ${filePath}`);
     return filePath;
+  }
+
+  async capturePreviewScreenshot(name) {
+    const filePath = path.join(this.outputDir, `${name}_preview.png`);
+    try {
+      const previewIframe = await this.page.$('iframe[title="Preview"]:visible, iframe[title="Preview"]');
+      if (previewIframe) {
+        await previewIframe.screenshot({ path: filePath });
+        logger.success(`Đã lưu ảnh chụp Preview: ${filePath}`);
+        return filePath;
+      }
+    } catch (e) {
+      logger.warn(`Không thể chụp trực tiếp iframe preview: ${e.message}`);
+    }
+    return this.captureScreenshot(name);
   }
 }
 

@@ -12,6 +12,7 @@
     "chrome:debug": "google-chrome --remote-debugging-port=9222 --user-data-dir=\"$HOME/.config/google-chrome-ai-studio\" https://aistudio.google.com/apps &",
     "vibecode:mathheads": "node bin/vibecoder.js run ./specs/mathheads.yaml",
     "vibecode:mathteach": "node bin/vibecoder.js run ./specs/mathteach-studio.yaml",
+    "vibecode:ai-studio": "node bin/vibecoder.js run ./specs/ai-eng-studio.yaml",
     "vibecode:idea": "node bin/vibecoder.js idea"
   },
   "keywords": [

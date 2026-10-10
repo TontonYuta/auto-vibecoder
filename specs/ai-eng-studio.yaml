@@ -1,0 +1,108 @@
+name: "ai-eng-studio"
+title: "AI Eng Studio — Phòng Lab Trực Quan Kỹ Nghệ AI Thực Chiến"
+description: "Web App tương tác mô phỏng toàn diện hệ sinh thái AI ứng dụng: RAG 2D Canvas, LangGraph Simulator, Semantic Cache Speedometer, AI Firewall Sandbox."
+author: "Tonton Yuta"
+version: "1.0.0"
+
+stages:
+  - id: "stage_1_shell_and_rag"
+    title: "Giai đoạn 1: Khung Dark Minimalist + Interactive RAG & Vector Space 2D Canvas"
+    prompt: |
+      Xây dựng ứng dụng web tương tác giáo dục kỹ nghệ AI chuyên sâu: "AI Eng Studio - The Interactive Visual Lab for Applied AI Engineers".
+      
+      QUY TẮC THIẾT KẾ (DESIGN SYSTEM BẮT BUỘC):
+      - Phong cách: Tối giản, chuyên nghiệp, lấy cảm hứng từ Linear, Vercel, Raycast.
+      - Tuyệt đối KHÔNG phong cách "AI slop" màu mè, KHÔNG dùng gradient cầu vồng, KHÔNG bo tròn dạng pill/bong bóng (Tất cả card, button, input phải có góc vuông vắn hoặc bo góc siêu nhỏ: rounded-none hoặc rounded-sm).
+      - Viền: 1px border sắc nét rõ ràng (border border-neutral-800).
+      - Màu sắc: Nền đen sâu (#09090b / bg-neutral-950), panel bề mặt (#121215 / bg-neutral-900), chữ trắng ngà (text-neutral-100/200), màu nhấn phẳng: Electric Blue (#2563eb), Emerald (#10b981), Amber (#f59e0b), Crimson (#ef4444).
+      - Font chữ: Inter cho chữ thường, JetBrains Mono cho số liệu, token, công thức và code.
+      - Bố cục: Viewport-locked 100vh (h-screen overflow-hidden), thanh điều hướng trên cùng h-12 viền 1px sắc nét, chia 2 cột Split-pane: Cột trái (Bảng điều khiển tham số & cấu hình), Cột phải (Vùng Canvas trực quan hóa 60fps).
+      
+      THANH ĐIỀU HƯỚNG TAB:
+      1. [🔍 RAG & Vector 2D] (Mặc định kích hoạt)
+      2. [🕸️ LangGraph Simulator]
+      3. [⚡ Semantic Cache & Cost]
+      4. [🛡️ AI Security Firewall]
+      5. [🧩 Self-Healing JSON Lab]
+      
+      TÍNH NĂNG CHI TIẾT TAB 1 [🔍 RAG & Vector 2D]:
+      1. Bảng điều khiển bên trái:
+         - Khung nhập văn bản nguồn (có nút nạp nhanh tài liệu mẫu: "SRE Incident Runbook", "Quy chế bảo mật Fintech").
+         - Thanh trượt tương tác:
+           + "Chunk Size" (từ 50 đến 500 ký tự, bước nhảy 10).
+           + "Chunk Overlap" (từ 0 đến 100 ký tự, bước nhảy 5).
+         - Xem trước phân đoạn văn bản trực tiếp: Khi kéo slider, văn bản lập tức được chia thành các khối có màu xen kẽ, phần overlap gối lên nhau được làm nổi bật với viền nét đứt.
+      2. Canvas Không Gian Vector 2D (Bên phải):
+         - Vẽ biểu đồ phân tán (2D Scatter Plot) mô phỏng không gian embeddings của các chunk văn bản.
+         - Ô nhập câu hỏi của người dùng (Query Input):
+           + Khi người dùng gõ câu hỏi, một điểm phát sáng màu Cyan (Query Point) xuất hiện trên Canvas.
+           + Tự động bắn các tia vector đo khoảng cách Cosine Similarity tới tất cả các điểm chunk xung quanh.
+           + Top-K chunks gần nhất phát sáng màu xanh lá kèm chỉ số Cosine Score (ví dụ: 0.923).
+      3. Tab con Reciprocal Rank Fusion (RRF):
+         - Hiển thị 2 cột xếp hạng song song: Cột 1 (Sparse BM25) vs Cột 2 (Dense Vector).
+         - Nút "Dung hợp RRF (k=60)": Kích hoạt animation hợp nhất hai danh sách và tính điểm RRF Score = 1/(60+rank) mượt mà.
+
+  - id: "stage_2_langgraph_simulator"
+    title: "Giai đoạn 2: Trình Mô Phỏng Đồ Thị Tác Tử LangGraph & Cổng Human-in-the-Loop"
+    prompt: |
+      Hoàn thiện Tab [🕸️ LangGraph Simulator] mô phỏng quy trình xử lý hoàn tiền tự hành có điểm ngắt phê duyệt an toàn:
+      
+      1. Sơ đồ Đồ thị Động (StateGraph Flowchart Canvas):
+         - Vẽ sơ đồ các Node bằng SVG kỹ thuật sắc nét:
+           [Yêu Cầu Khách Hàng] ➔ [Planner Agent] ➔ [SQL Query Sandbox] ➔ [Cổng Quản Lý Duyệt (Breakpoint)] ➔ [Giải Ngân Ngân Hàng] ➔ [Gửi Thông Báo].
+         - Nhánh phụ: Từ [Cổng Quản Lý Duyệt] nếu từ chối ➔ [Thông Báo Từ Chối].
+      2. Bộ điều khiển mô phỏng luồng (Playback Control Bar):
+         - Nút: [▶ Chạy Auto], [⏸ Tạm Dừng], [⏭ Bước Tiếp Theo], [🔄 Reset], Thanh trượt tốc độ [1x / 2x / 5x].
+         - Khi chạy, một gói dữ liệu (Data Packet / Orb) phát sáng di chuyển mượt mà dọc theo các mũi tên từ node này sang node khác.
+         - Panel bên dưới hiển thị State Payload theo thời gian thực (JSON đổi màu sống động theo từng bước).
+      3. Cổng phê duyệt con người tương tác (Interactive Human-in-the-Loop Modal):
+         - Cho phép người dùng chỉnh số tiền yêu cầu: Khoản nhỏ (1.200.000 VNĐ) vs Khoản lớn (25.000.000 VNĐ).
+         - Với khoản lớn, gói dữ liệu tự động dừng khựng lại ở node [Cổng Quản Lý Duyệt], nhấp nháy đèn vàng cảnh báo.
+         - Một Modal popup sắc nét xuất hiện: "CẢNH BÁO: Số tiền 25.000.000 VNĐ vượt hạn mức tự động. Bạn có duyệt không?"
+         - Nút [ĐỒNG Ý (Approved)] ➔ Gói dữ liệu rẽ sang nhánh Giải ngân.
+         - Nút [TỪ CHỐI (Rejected)] ➔ Gói dữ liệu rẽ sang nhánh Hủy bỏ.
+
+  - id: "stage_3_security_and_caching"
+    title: "Giai đoạn 3: Tường Lửa AI Firewall Sandbox & Bảng Đo Semantic Caching Speedometer"
+    prompt: |
+      Hoàn thiện 2 Tab tiếp theo:
+      
+      1. TAB [🛡️ AI Security Firewall Playground]:
+         - Red Team Sandbox (Bên trái): Khung nhập prompt tấn công, kèm 4 nút nạp sẵn:
+           + [Jailbreak DAN Mode]
+           + [Prompt Injection: Bỏ qua hướng dẫn trước]
+           + [Trích xuất System Prompt / Canary]
+           + [Payload chứa CCCD + Thẻ tín dụng + SĐT]
+         - Tường lửa quét trực tiếp 3 tầng (Bên phải):
+           + Tầng 1: PII Masker — Tự động nhận diện và bọc neon các thông tin [REDACTED_CCCD], [REDACTED_CARD] kèm âm thanh thông báo.
+           + Tầng 2: Injection Detector — Thanh đo rủi ro (0% - 100%), nếu > 50% lập tức bật còi báo động đỏ "BLOCKED".
+           + Tầng 3: Canary Token Trap — Đặt mã bí mật ẩn; nếu câu trả lời chứa mã này, nội dung lập tức bị che mờ.
+         - Bảng Audit Log ghi nhận thời gian, địa chỉ IP giả lập, loại tấn công và hành động xử lý.
+      
+      2. TAB [⚡ Semantic Cache & Cost Speedometer]:
+         - Bảng điều khiển:
+           + Ô nhập câu hỏi 1 (đã lưu cache) và ô nhập câu hỏi 2 (câu hỏi mới).
+           + Thanh trượt "Ngưỡng Cosine Threshold" (từ 0.70 đến 0.95).
+         - Đồng hồ so sánh thời gian thực:
+           + Đồng hồ đo Latency: 350ms (Cache Miss) vs 5ms (Cache Hit).
+           + Đồng hồ đo Chi Phí API: So sánh GPT-4o ($0.003), Claude 3.5 Sonnet ($0.004) vs Cache Hit ($0.000000).
+         - Hoạt họa Token Bucket: Một ống trụ chứa các token giọt nước rơi xuống và nạp lại vi sai thời gian theo chuẩn M/M/c queueing.
+
+  - id: "stage_4_self_healing_and_polish"
+    title: "Giai đoạn 4: Self-Healing JSON Lab, Web Audio FX & Tinh Chỉnh Sản Xuất"
+    prompt: |
+      Hoàn thiện Tab cuối cùng và đánh bóng toàn diện ứng dụng:
+      
+      1. TAB [🧩 Self-Healing JSON Lab]:
+         - Cột trái: Khai báo Pydantic Schema (Ví dụ: InvoiceData gồm invoice_id, items, tax_id, total_amount).
+         - Cột phải: Khung phản hồi của mô hình.
+         - Nút "Cố tình làm vỡ JSON (Inject Malformed Chaos)": Cắt mất ngoặc nhọn, đổi số tiền thành chữ ("năm mươi triệu").
+         - Luồng Feedback Loop tự động:
+           + Đèn đỏ ValidationError sáng lên, hiển thị chính xác dòng và trường bị lỗi.
+           + Tự động kích hoạt thông điệp sửa lỗi "Self-Healing Prompt" gửi lại cho model.
+           + Model sinh lại kết quả, đèn chuyển sang xanh lục "VALIDATED 100%".
+      
+      2. Tinh chỉnh Thẩm mỹ & Hiệu năng:
+         - Tích hợp Web Audio API (âm thanh click phím sắc sảo, tiếng chuông ping khi cache hit, âm thanh cảnh báo khi firewall chặn). Có nút bật/tắt âm thanh [Mute Audio] trên thanh tiêu đề.
+         - Nút "Nạp Preset Doanh Nghiệp": Cho phép chuyển nhanh cấu hình sang bài toán Fintech, Y tế, hoặc Thương mại điện tử.
+         - Tối ưu hóa phản hồi mượt mà 60fps trên mọi kích thước màn hình, lưu trạng thái bài học vào LocalStorage.
