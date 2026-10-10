@@ -1,0 +1,26 @@
+name: "my-awesome-app"
+title: "My Awesome Web App"
+description: "A short description of what this app does"
+author: "Your Name"
+version: "1.0.0"
+
+stages:
+  - id: "v1-foundation"
+    title: "V1: Layout, Core Theme & Base State"
+    prompt: |
+      Mô tả kiến trúc nền tảng, màu sắc (Dark Slate), font chữ và các thành phần cốt lõi của ứng dụng.
+
+  - id: "v2-core-loop"
+    title: "V2: Main Features & User Interactivity"
+    prompt: |
+      Mô tả vòng lặp tính năng chính, xử lý tương tác của người dùng và luồng dữ liệu.
+
+  - id: "v3-game-feel-advanced"
+    title: "V3: Animations, Sound FX & Advanced Features"
+    prompt: |
+      Mô tả các hiệu ứng chuyển động, âm thanh Web Audio API và tính năng mở rộng.
+
+  - id: "v4-polish-persistence"
+    title: "V4: Responsive Polish, Storage & Final Touch"
+    prompt: |
+      Mô tả việc lưu trữ LocalStorage, tối ưu responsive trên màn hình mobile 375px và căn chỉnh thẩm mỹ.

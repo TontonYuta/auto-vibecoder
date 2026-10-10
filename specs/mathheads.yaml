@@ -1,0 +1,46 @@
+name: "mathheads-speed-mental-math"
+title: "MathHeads - Speed Mental Math Trainer"
+description: "A fast-paced mental math training web app clone of mathheads.net"
+author: "Auto-Vibecoder"
+version: "1.0.0"
+
+stages:
+  - id: "v1-foundation"
+    title: "V1: Core Layout, Difficulties & Input Engine"
+    prompt: |
+      Hãy tạo một ứng dụng web clone game tính nhẩm tốc độ MathHeads (mathheads.net) bằng React và Tailwind CSS.
+      Yêu cầu phiên bản 1:
+      1. Giao diện Dark Theme hiện đại (màu nền tối slate-950, card slate-900/80 có viền mờ, điểm nhấn cyan neon / emerald), font số monospaced to rõ ràng.
+      2. Chọn độ khó: Easy (cộng/trừ trong phạm vi 20), Medium (cộng/trừ 2 chữ số, bảng cửu chương nhân/chia), Hard (nhân chia 2 chữ số, phép tính hỗn hợp).
+      3. Khu vực tính nhẩm trung tâm: Phép toán hiển thị to rõ, ô nhập đáp án tự động focus.
+      4. Hỗ trợ cả gõ phím số vật lý (Numpad, Enter) lẫn bàn phím ảo trực quan trên màn hình.
+      5. Phản hồi tức thì: Nhập đúng lập tức chuyển sang câu tiếp theo và chớp xanh lá; nhập sai thì chớp đỏ và hiện kết quả đúng ngắn gọn.
+
+  - id: "v2-modes"
+    title: "V2: Classic Mode & Survival Falling Questions"
+    prompt: |
+      Bổ sung hoàn thiện 2 chế độ chơi chính của MathHeads:
+      1. Chế độ Classic Mode (Nước rút 60s - 120s): Đồng hồ đếm ngược, combo nhân điểm, bảng tổng kết số câu đúng/sai, tốc độ CPM (phép tính/phút).
+      2. Chế độ Survival Mode: Các câu hỏi toán học rơi dần từ trên đỉnh màn hình xuống dưới. Người chơi có 3 mạng (❤️❤️❤️), phải gõ đáp án để phá hủy câu hỏi trước khi chạm đáy. Tốc độ rơi tăng dần theo điểm số.
+
+  - id: "v3-bot-duel-juice"
+    title: "V3: Visual Juice & Bot Duel Race"
+    prompt: |
+      Thêm hiệu ứng game feel và chế độ đua 1v1:
+      1. Visual Juice:
+         - Hiệu ứng nổ pháo hoa hạt (Canvas Particle Confetti) bung toả rực rỡ khi giải đúng câu hỏi.
+         - Hiệu ứng rung màn hình (Screen Shake) khi giải sai hoặc mất mạng.
+         - Huy hiệu Combo nảy động bốc lửa: 🔥 COMBO x2, ⚡ SIÊU TỐC x3, 💥 THẦN TOÁN x5.
+      2. Chế độ Đua 1v1 với Bot (MathBot Duel Race):
+         - Đua tốc độ giải toán 15 câu với MathBot AI (chọn cấp độ bot: Tập sự 25 CPM, Cao thủ 45 CPM, Thần đồng 70 CPM).
+         - Đường đua Cyber Race Track trực quan ở đầu màn hình với Tên lửa 🚀 và Robot 🤖 bám đuổi nhau về đích.
+         - Màn vinh danh với cúp vô địch 🏆 và nút Đua lại ngay.
+
+  - id: "v4-audio-ranks-polish"
+    title: "V4: Web Audio Synth, Rank Progression & LocalStorage"
+    prompt: |
+      Hoàn thiện âm thanh, cấp bậc và tối ưu giao diện:
+      1. Âm thanh Web Audio API thuần (không dùng file ngoài): Tiếng chime vui tươi khi đúng, tiếng buzz khi sai, tiếng fanfare khi đạt kỷ lục. Có nút Mute/Unmute.
+      2. Hệ thống cấp bậc Rank: Novice -> Apprentice -> Solver -> Math Wizard -> Math Legend dựa trên tổng XP tích lũy.
+      3. Bảng thống kê chi tiết 3 tab: Tổng quan, Phân loại dạng bài, Lịch sử câu. Lưu điểm cao kỷ lục vào localStorage.
+      4. Tối ưu responsive hoàn hảo trên cả điện thoại (375px) và máy tính, không có horizontal scrollbar.

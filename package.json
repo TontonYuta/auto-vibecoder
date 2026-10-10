@@ -1,0 +1,31 @@
+{
+  "name": "auto-vibecoder",
+  "version": "1.0.0",
+  "description": "Autonomous Agentic App Factory orchestrating Google AI Studio Apps via Playwright CDP",
+  "main": "src/core/driver.js",
+  "bin": {
+    "vibecoder": "./bin/vibecoder.js"
+  },
+  "scripts": {
+    "start": "node bin/vibecoder.js",
+    "check": "node bin/vibecoder.js check",
+    "chrome:debug": "google-chrome --remote-debugging-port=9222 --user-data-dir=\"$HOME/.config/google-chrome-ai-studio\" https://aistudio.google.com/apps &",
+    "vibecode:mathheads": "node bin/vibecoder.js run ./specs/mathheads.yaml",
+    "vibecode:idea": "node bin/vibecoder.js idea"
+  },
+  "keywords": [
+    "vibecoding",
+    "agentic-coding",
+    "gemini",
+    "google-ai-studio",
+    "playwright",
+    "self-healing",
+    "autonomous-agent"
+  ],
+  "author": "tontonyuta",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.50.0",
+    "yaml": "^2.7.0"
+  }
+}
